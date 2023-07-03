@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      animation: fade-in 1s ease-in-out;
+    }
+    
+    @keyframes fade-in {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    h2 {
+      text-align: center;
+      color: #333;
+      animation: scale-up 0.8s ease-in-out;
+    }
+    
+    @keyframes scale-up {
+      0% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+    
+    p {
+      margin-bottom: 10px;
+      animation: slide-up 0.8s ease-in-out;
+    }
+    
+    @keyframes slide-up {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    ul {
+      padding-left: 20px;
+      animation: slide-up 0.8s ease-in-out;
+    }
+    
+    .tip-list li {
+      list-style-type: disc;
+      margin-bottom: 5px;
+    }
+    
+    .message {
+      font-weight: bold;
+      margin-bottom: 15px;
+      animation: slide-up 0.8s ease-in-out;
+    }
+    
+    .message.no-diabetes {
+      color: #006400;
+    }
+    
+    .message.pre-diabetic {
+      color: #ff9900;
+    }
+    
+    .message.diabetes {
+      color: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Diabetes Prediction Result</h2>
+    {% if prediction == 0 %}
+      <p class="message no-diabetes">Hi! {{ name }}, the predicted outcome is that you don't have diabetes.</p>
+      <p>Here are some tips to avoid diabetes:</p>
+      <ul class="tip-list">
+        <li>Adopt a healthy diet with fruits and vegetables.</li>
+        <li>Engage in regular physical activity.</li>
+        <li>Maintain a healthy weight.</li>
+        <li>Get regular check-ups with a healthcare professional.</li>
+      </ul>
+    {% elif prediction == 1 %}
+      <p class="message pre-diabetic">Hi! {{ name }}, the predicted outcome is that you are in a pre-diabetic stage.</p>
+      <p>Here are some steps to prevent diabetes:</p>
+      <ul class="tip-list">
+        <li>Follow a balanced diet.</li>
+        <li>Increase physical activity.</li>
+        <li>Maintain a healthy weight.</li>
+        <li>Monitor blood sugar levels regularly.</li>
+      </ul>
+      <p>You may also consult with healthcare professionals for personalized guidance.</p>
+    {% elif prediction == 2 %}
+      <p class="message diabetes">Hi! {{ name }}, the predicted outcome is that you have diabetes.</p>
+      <p>Here are some tips for managing diabetes:</p>
+      <ul class="tip-list">
+        <li>Follow a healthy meal plan.</li>
+        <li>Monitor blood sugar levels regularly.</li>
+        <li>Take prescribed medications as directed.</li>
+        <li>Engage in regular exercise.</li>
+        <li>Visit healthcare professionals for regular check-ups and guidance.</li>
+      </ul>
+      <p>You may also consult with diabetes specialists for personalized care.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

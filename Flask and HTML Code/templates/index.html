@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: "Times New Roman", Times, serif;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #333333;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 80px;
+      background-color: #E5F1F9;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-row {
+      margin-bottom: 10px;
+    }
+
+    .form-row label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    div {
+      width: 90%;
+      padding: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-row input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .form-row input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-row input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .submit-btn {
+      text-align: center;
+    }
+
+    .range-value {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .required-label::after {
+      content: "*";
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Diabetes Prediction</h1>
+    <h4>This page works based on a trained model to predict that the person is having diabetes or not.</h4>
+    <h4>We would like to know some details about your health.</h4>
+    <form action="/predict" method="post">
+      <div class="form-row">
+        <label for="Name" class="required-label">Tell us your name</label>
+        <input type="text" name="Name" required>
+      </div>
+      <div class="form-row">
+        <label for="HighBp" class="required-label">Do you have high Blood Pressure[Bp of 140/80 and above] ?</label>
+        <input type="radio" name="HighBp" value="yes" required>Yes
+        <input type="radio" name="HighBp" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="HighChol" class="required-label">Do you have high Cholesterol[240mg/dL and above] ?</label>
+        <input type="radio" name="HighChol" value="yes" required>Yes
+        <input type="radio" name="HighChol" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="CholCheck" class="required-label">Have you checked your cholesterol in the past five years ?:</label>
+        <input type="radio" name="CholCheck" value="yes" required>Yes
+        <input type="radio" name="CholCheck" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="BMI" class="required-label">What is your Body Mass Index(BMI) value ?</label>
+        <input type="number" name="BMI" placeholder = "Enter BMI value here" required>
+      </div>
+      <div class="form-row">
+        <label for="Smoker" class="required-label">Have you smoked(a minimum of 100 cigars) ?</label>
+        <input type="radio" name="Smoker" value="yes" required>Yes
+        <input type="radio" name="Smoker" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="Stroke" class="required-label">Do you have any history of getting stroke ?</label>
+        <input type="radio" name="Stroke" value="yes" required>Yes
+        <input type="radio" name="Stroke" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="HeartDiseaseorAttack" class="required-label">Do you have any Heart diseases or Heart Attack ?</label>
+        <input type="radio" name="HeartDiseaseorAttack" value="yes" required>Yes
+        <input type="radio" name="HeartDiseaseorAttack" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="PhysActivity" class="required-label">Do you workout(exercise) daily or weekly three times ?</label>
+        <input type="radio" name="PhysActivity" value="yes" required>Yes
+        <input type="radio" name="PhysActivity" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="Fruits" class="required-label">Do you eat fruits daily(atleast 1 per day) ?</label>
+        <input type="radio" name="Fruits" value="yes" required>Yes
+        <input type="radio" name="Fruits" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="Veggies" class="required-label">Do you eat vegetables daily(atleast 1 per day) ?</label>
+        <input type="radio" name="Veggies" value="yes" required>Yes
+        <input type="radio" name="Veggies" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="HvyAlcoholConsump" class="required-label">Are you a heavy alcohol consumer ?(For women, heavy drinking is 8 drinks or more per week. For men, heavy drinking is 15 drinks or more per week)</label>
+        <input type="radio" name="HvyAlcoholConsump" value="yes" required>Yes
+        <input type="radio" name="HvyAlcoholConsump" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="AnyHealthcare" class="required-label">Do you enough health care access(like insurances and coverages) ?</label>
+        <input type="radio" name="AnyHealthcare" value="yes" required>Yes
+        <input type="radio" name="AnyHealthcare" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="NoDocbcCost" class="required-label"> Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?</label>
+        <input type="radio" name="NoDocbcCost" value="yes" required>Yes
+        <input type="radio" name="NoDocbcCost" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="GenHlth" class="required-label">Would you say that in general your health ?<br>(On a scale of 1-5: 1 = excellent 2 = very good 3 = good 4 = fair 5 = poor)</label>
+        <input type="range" name="GenHlth" min="1" max="5" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="form-row">
+        <label for="MentHlth" class="required-label">Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good?</label>
+        <input type="range" name="MentHlth" min="0" max="30" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="form-row">
+        <label for="PhysHlth" class="required-label">Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 ? </label>
+        <input type="range" name="PhysHlth" min="0" max="30" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="form-row">
+        <label for="DiffWalk" class="required-label"> Do you have serious difficulty walking or climbing stairs?</label>
+        <input type="radio" name="DiffWalk" value="yes" required>Yes &nbsp&nbsp&nbsp
+        <input type="radio" name="DiffWalk" value="no" required>No
+      </div>
+      <div class="form-row">
+        <label for="Sex" class="required-label">Sex:</label>
+        <input type="radio" name="Sex" value="0" required>Female &nbsp&nbsp&nbsp
+        <input type="radio" name="Sex" value="1" required>Male
+      </div>
+      <div class="form-row">
+        <label for="Age" class="required-label">Age: <br>1 is 18-24 all the way up to 13 wis 80 and older. 5 year increments.</label>
+        <input type="range" name="Age" min="0" max="13" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="form-row">
+        <label for="Education" class="required-label">Tell about your education level ?<br>with 1 being never attended school or kindergarten only up to 6 being college 4 years or more(Scale here is 1-6)</label>
+        <input type="range" name="Education" min="1" max="6" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="form-row">
+        <label for="Income" class="required-label">Annual Household income from all sources ?<br> On a scale of 1 to 8(with 1 = $10000 and 8 being $80000 and more, with $10000 increment)</label>
+        <input type="range" name="Income" min="1" max="8" required oninput="updateRangeValue(this)">
+        <span class="range-value">Value: <span></span></span>
+      </div>
+      <div class="submit-btn">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function updateRangeValue(rangeInput) {
+      rangeInput.nextElementSibling.firstElementChild.textContent = rangeInput.value;
+    }
+  </script>
+</body>
+</html>
